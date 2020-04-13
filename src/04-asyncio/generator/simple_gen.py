@@ -1,6 +1,3 @@
-from typing import List
-
-
 # def fib(n: int) -> List[int]:
 #     numbers = []
 #     current, nxt = 0, 1
@@ -9,6 +6,7 @@ from typing import List
 #         numbers.append(current)
 #
 #     return numbers
+
 
 def fib():
     current, nxt = 0, 1
@@ -20,7 +18,7 @@ def fib():
 result = fib()
 
 for n in result:
-    print(n, end=', ')
+    print(n, end=", ")
     if n > 10000:
         break
 

@@ -5,7 +5,7 @@ import asyncio
 
 def main():
     lim = 250_000
-    print("Running standard loop with {:,} actions.".format(lim*2))
+    print("Running standard loop with {:,} actions.".format(lim * 2))
     t0 = datetime.datetime.now()
 
     loop = asyncio.get_event_loop()
@@ -19,7 +19,11 @@ def main():
     loop.run_until_complete(final_task)
 
     dt = datetime.datetime.now() - t0
-    print(colorama.Fore.WHITE + "App exiting, total time: {:,.2f} sec.".format(dt.total_seconds()), flush=True)
+    print(
+        colorama.Fore.WHITE
+        + "App exiting, total time: {:,.2f} sec.".format(dt.total_seconds()),
+        flush=True,
+    )
 
 
 async def generate_data(num: int, data: asyncio.Queue):
@@ -37,5 +41,5 @@ async def process_data(num: int, data: asyncio.Queue):
         await asyncio.sleep(0)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

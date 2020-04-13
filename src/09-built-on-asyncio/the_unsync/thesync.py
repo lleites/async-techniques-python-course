@@ -27,21 +27,27 @@ def main():
     [t.result() for t in tasks]
 
     dt = datetime.datetime.now() - t0
-    print("Synchronous version done in {:,.2f} seconds.".format(dt.total_seconds()))
+    print(
+        "Synchronous version done in {:,.2f} seconds.".format(
+            dt.total_seconds()
+        )
+    )
 
 
 @unsync(cpu_bound=True)
 def compute_some():
     print("Computing...")
     for _ in range(1, 10_000_000):
-        math.sqrt(25 ** 25 + .01)
+        math.sqrt(25 ** 25 + 0.01)
 
 
 @unsync()
 async def download_some():
     print("Downloading...")
-    url = 'https://talkpython.fm/episodes/show/174/coming-into-python-from-another-industry-part-2'
-    async with aiohttp.ClientSession(connector=aiohttp.TCPConnector(ssl=False)) as session:
+    url = "https://talkpython.fm/episodes/show/174/coming-into-python-from-another-industry-part-2"
+    async with aiohttp.ClientSession(
+        connector=aiohttp.TCPConnector(ssl=False)
+    ) as session:
         async with session.get(url) as resp:
             resp.raise_for_status()
 
@@ -53,7 +59,7 @@ async def download_some():
 @unsync()
 def download_some_more():
     print("Downloading more ...")
-    url = 'https://pythonbytes.fm/episodes/show/92/will-your-python-be-compiled'
+    url = "https://pythonbytes.fm/episodes/show/92/will-your-python-be-compiled"
     resp = requests.get(url)
     resp.raise_for_status()
 
@@ -66,8 +72,8 @@ def download_some_more():
 async def wait_some():
     print("Waiting...")
     for _ in range(1, 1000):
-        await asyncio.sleep(.001)
+        await asyncio.sleep(0.001)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()
